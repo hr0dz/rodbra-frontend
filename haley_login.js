@@ -2,14 +2,13 @@ const usersURL = "http://localhost:3000/users"
 
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
-//const loginErrorMsg = document.getElementById("login-error-msg");
 
 
 
 function fetchUsers() {
     fetch(usersURL)
       .then(resp => resp.json())
-      .then(users => users.forEach(renderUser))
+      .then(users => renderUser(users))
   }
 
 function loginListener(){
