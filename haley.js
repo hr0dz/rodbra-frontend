@@ -1,6 +1,4 @@
 
-
-
 function main(){
     fetchUsers();
     }
@@ -52,6 +50,7 @@ let userData
      const userCard = `
      <li class="user">
             <h2>${user.username}</h2>
+            <button class="follow-btn" data-id=${user.id}>Follow +</button> 
             </li>`
     userCollect.innerHTML += userCard
 }
@@ -132,15 +131,64 @@ const displayUsers = (users) => {
 
 
 function followButton(event){
-        if (event.target.className === "follow-btn") {
-            handleFollow(event)
-        };
+    if (event.target.className === "follow-btn") {
+        handleFollow(event)
+    };
 
-    }
- 
- function handleFollow(event){
+}
 
- }
+function handleFollow(event){
+
+}
 
 
 loadUsers();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function followButton(event){
+//         if (event.target.className === "follow-btn") {
+//             handleFollow(event)
+//             $("#follow-btn").animate({ width: '-=10px' }, 100, 'easeInCubic', function () {});
+//             $("#follow-btn").animate({ width: '+=45px', left: '-=15px' }, 600, 'easeInOutBack', function () { 
+//                 $("#follow-btn").css("color", "#fff");
+//                 $("#follow-btn").text("Following");
+//                 $("#follow-btn").animate({
+//                     backgroundColor: "#2EB82E",
+//                     borderColor: "#2EB82E"
+//                   }, 1000 );
+//                 });
+//               }else{
+//                 $("#follow-btn").animate({ width: '-=25px', left: '+=15px' }, 600, 'easeInOutBack', function () { 
+//                     $("#follow-btn").text("+ Follow");
+//                     $("#follow-btn").css("color", "#3399FF");
+//                     $("#follow-btn").css("background-color", "#ffffff");
+//                     $("#follow-btn").css("border-color", "#3399FF");
+//                   });
+//                 }
+//               }
+
+
+
+
+
+
+//  function handleFollow(event){
+
+//  }
+
+
+// loadUsers();
+
+
+
