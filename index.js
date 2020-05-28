@@ -118,7 +118,7 @@ const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
             return `
-            <li class="character">
+            <li class="user">
             <h2>${user.username}</h2>
             <h3>${user.follower_relationships.followers}</h3>
             <h3>${user.following_relationships}</h3>
