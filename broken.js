@@ -1,4 +1,6 @@
 
+
+
 function main(){
     fetchUsers();
     }
@@ -38,22 +40,22 @@ let userData
 
        fetch(usersURL, reqObj)
       .then(resp => resp.json())
-      .then(user => renderUser(user))
-     // .then(data => {
-       // userData(data)
-        //userShow(data)
-    };
+      //.then(user => renderUser(user))
+      .then(data => {
+      userData(data)
+        renderUser(data)
+    })
         
     const userCollect = document.querySelector('#usersList')
     
-    function renderUser(user) { 
+    function renderUser(data) { 
      const userCard = `
      <li class="user">
-            <h2>${user.username}</h2>
-            <button class="follow-btn" data-id=${user.id}>Follow +</button> 
+            <h1> ${data.username}</j1
+            <h2> ${data.username}</h2>
             </li>`
     userCollect.innerHTML += userCard
-}
+    }
 
 
 // user show page function
@@ -111,13 +113,12 @@ const loadUsers = async () => {
     } catch (err) {
         console.error(err);
     }
-};
 
 const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
             return `
-            <li class="character">
+            <li class="user">
             <h2>${user.username}</h2>
             <h3>${user.follower_relationships.followers}</h3>
             <h3>${user.following_relationships}</h3>
@@ -127,68 +128,28 @@ const displayUsers = (users) => {
         })
         .join('');
     userCollect.innerHTML = htmlString;
-};
+}
 
 
 function followButton(event){
-    if (event.target.className === "follow-btn") {
-        handleFollow(event)
-    };
+        if (event.target.className === "follow-btn") {
+            handleFollow(event)
+        };
 
+ 
+ function handleFollow(event){
+     const followUserId = event.target.dataset.id
+     console.log(followUserId)
+    const reqObj = {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json"
+        },
+        body:  JSON.stringify({ user: userData.id,
+        followUser: followUserId })
+      }
+    }
 }
-
-function handleFollow(event){
-
-}
-
 
 loadUsers();
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function followButton(event){
-//         if (event.target.className === "follow-btn") {
-//             handleFollow(event)
-//             $("#follow-btn").animate({ width: '-=10px' }, 100, 'easeInCubic', function () {});
-//             $("#follow-btn").animate({ width: '+=45px', left: '-=15px' }, 600, 'easeInOutBack', function () { 
-//                 $("#follow-btn").css("color", "#fff");
-//                 $("#follow-btn").text("Following");
-//                 $("#follow-btn").animate({
-//                     backgroundColor: "#2EB82E",
-//                     borderColor: "#2EB82E"
-//                   }, 1000 );
-//                 });
-//               }else{
-//                 $("#follow-btn").animate({ width: '-=25px', left: '+=15px' }, 600, 'easeInOutBack', function () { 
-//                     $("#follow-btn").text("+ Follow");
-//                     $("#follow-btn").css("color", "#3399FF");
-//                     $("#follow-btn").css("background-color", "#ffffff");
-//                     $("#follow-btn").css("border-color", "#3399FF");
-//                   });
-//                 }
-//               }
-
-
-
-
-
-
-//  function handleFollow(event){
-
-//  }
-
-
-// loadUsers();
-
-
-

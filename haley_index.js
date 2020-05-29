@@ -1,6 +1,4 @@
 
-
-
 function main(){
     fetchUsers();
     }
@@ -27,7 +25,7 @@ let userData
     function newUser(event) {
     event.preventDefault()
     username = event.target[0].value
-    console.log(username)
+    //console.log(username)
 
       const reqObj = {
       method: 'POST', 
@@ -40,18 +38,20 @@ let userData
 
        fetch(usersURL, reqObj)
       .then(resp => resp.json())
-      .then(user => renderUser(user))
-     // .then(data => {
-       // userData(data)
-        //userShow(data)
-    };
+     // .then(user => renderUser(user))
+      .then(data => {
+       userData = data
+        renderUser(data)
+      
+    })
+}
         
     const userCollect = document.querySelector('#usersList')
     
     function renderUser(user) { 
      const userCard = `
      <li class="user">
-            <h2>${user.username}</h2>
+            <h2> wassup, ${user.username}</h2>
             </li>`
     userCollect.innerHTML += userCard
 }
@@ -91,11 +91,12 @@ let userData
 const searchBar = document.getElementById('searchBar');
 let usersArr = [];
 
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value;
+searchBar.addEventListener('keyup', (event) => {
+    const searchString = event.target.value;
 
     const filteredUsers = usersArr.filter((user) => {
         console.log(user.username)
+        console.log(usersArr)
         return (
             user.username.includes(searchString)
            // user.id.includes(searchString)
@@ -114,33 +115,101 @@ const loadUsers = async () => {
     }
 };
 
+loadUsers();
+
 const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
+            console.log(user);
             return `
             <li class="user">
             <h2>${user.username}</h2>
-            <h3>${user.follower_relationships.followers}</h3>
-            <h3>${user.following_relationships}</h3>
             <button class="follow-btn" data-id=${user.id}>Follow +</button> 
             </li>
         `;
         })
         .join('');
+
     userCollect.innerHTML = htmlString;
 };
 
 
+userCollect.addEventListener('click', followButton);
+
 function followButton(event){
-        if (event.target.className === "follow-btn") {
-            handleFollow(event)
-        };
+    if (event.target.className === "follow-btn") {
+        handleFollow(event)
+        event.target.innerText = 'Following';
+    };
 
-    }
- 
- function handleFollow(event){
+}
 
- }
+function handleFollow(event){
+    const followUserId = event.target.dataset.id
+    const reqObj = {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json"
+        },
+        body:  JSON.stringify({ user: userData.id,
+        followUser: followUserId })
+      }
+      fetch('http://localhost:3000/follow_user', reqObj)
+      .then(resp => resp.json())
+      .then(data => {
+       userData(data)
+      }
+        ) 
+};
 
 
-loadUsers();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function followButton(event){
+//         if (event.target.className === "follow-btn") {
+//             handleFollow(event)
+            // $("#follow-btn").animate({ width: '-=10px' }, 100, 'easeInCubic', function () {});
+            // $("#follow-btn").animate({ width: '+=45px', left: '-=15px' }, 600, 'easeInOutBack', function () { 
+            //     $("#follow-btn").css("color", "#fff");
+            //     $("#follow-btn").text("Following");
+            //     $("#follow-btn").animate({
+            //         backgroundColor: "#2EB82E",
+            //         borderColor: "#2EB82E"
+            //       }, 1000 );
+            //     });
+            //   }else{
+            //     $("#follow-btn").animate({ width: '-=25px', left: '+=15px' }, 600, 'easeInOutBack', function () { 
+            //         $("#follow-btn").text("+ Follow");
+            //         $("#follow-btn").css("color", "#3399FF");
+            //         $("#follow-btn").css("background-color", "#ffffff");
+            //         $("#follow-btn").css("border-color", "#3399FF");
+            //       });
+            //     }
+            //   }
+
+
+
+
+
+
+//  function handleFollow(event){
+
+//  }
+
+
+// loadUsers();
+
+
+
