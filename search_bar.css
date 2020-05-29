@@ -17,14 +17,14 @@ h1 {
     text-align: center;
 }
 
-#charactersList {
+#usersList {
     padding-inline-start: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 20px;
 }
 
-.character {
+.user {
     list-style-type: none;
     background-color: #eaeaea;
     border-radius: 3px;
@@ -37,18 +37,18 @@ h1 {
     text-align: left;
 }
 
-.character > h2 {
+.user > h2 {
     grid-area: name;
     margin-bottom: 0px;
 }
 
-.character > p {
+.user > p {
     grid-area: house;
     margin: 0;
     margin-top: -18px;
 }
 
-.character > img {
+.user > img {
     max-height: 100px;
     grid-area: image;
 }
@@ -72,3 +72,20 @@ h1 {
     top: 7px;
     right: 15px;
 }
+
+
+#follow-btn{
+    color: #3399FF;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;	 
+    top: 50px;
+    left: 50px;	
+    cursor: hand;		    
+  }

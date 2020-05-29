@@ -5,24 +5,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="haley_login.js"></script>
+  <link rel="stylesheet" href="search_bar.css">
+  <script defer src="haley_index.js"></script>
 </head>
 
 <body>
+<div id="nav">
+<button id="search">Search</button>
+</div>
   <main id="main-holder">
     <h1 id="login-header">Login</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-    </div>
     
     <form id="login-form">
       <input type="text" name="username" id="username-field" class="form" placeholder="Username">
       <input type="submit" value="Login" id="login-form-submit">
     </form>
+
   
   </main>
 </body>
 
 </html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet" href="search_bar.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>&#x2728; Search For User &#x2728;</h1>
+            <div id="searchWrapper">
+                <input
+                    type="text"
+                    name="searchBar"
+                    id="searchBar"
+                    placeholder="search for a user"
+                />
+            </div>
+            <ul id="usersList"></ul>
+        </div>
+        <script src="haley_login.js"></script>
+    </body>
+</html> -->
