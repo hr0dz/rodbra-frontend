@@ -163,9 +163,27 @@ function handleFollow(event){
         ) 
 };
 
+let main = document.querySelector("#main-holder")
+console.log(main)
 
-
-
+let nav = document.querySelector("#search")
+nav.addEventListener('click', function(event){
+    main.innerHTML = ''
+    main.innerHTML = "hi"
+    console.log(event)
+//     ` <div class="container">
+// //     <h1>&#x2728; Search For User &#x2728;</h1>
+// //     <div id="searchWrapper">
+// //         <input
+// //             type="text"
+// //             name="searchBar"
+// //             id="searchBar"
+// //             placeholder="search for a user"
+// //         />
+// //     </div>
+// //     <ul id="usersList"></ul>
+// // </div> `
+})
 
 
 
@@ -200,16 +218,8 @@ function handleFollow(event){
             //   }
 
 
-
-
-
-
 //  function handleFollow(event){
 
 //  }
 
-
 // loadUsers();
-
-
-
